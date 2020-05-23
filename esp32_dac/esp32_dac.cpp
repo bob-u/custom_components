@@ -24,8 +24,10 @@ void ESP32DAC::dump_config() {
 }
 
 void ESP32DAC::write_state(float state) {
-  state = state * 255;
+  if (this->pin_->is_inverted())
+    state = 1.0f - state;
 
+  state = state * 255;
   dacWrite(this->pin_->get_pin(), state);
 }
 

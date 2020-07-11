@@ -19,7 +19,7 @@ void THALES::on_modbus_data(const std::vector<uint8_t> &data) {
     return (uint16_t(data[i + 0]) << 8) | (uint16_t(data[i + 1]) << 0);
   };
 
-  uint32_t raw_humidity = thales_get_16bit(0);
+  uint16_t raw_humidity = thales_get_16bit(0);
   float humidity = raw_humidity / 10.0f;
 
   uint16_t raw_temperature = thales_get_16bit(2);
@@ -32,10 +32,6 @@ void THALES::on_modbus_data(const std::vector<uint8_t> &data) {
   if (this->humidity_sensor_ != nullptr)
     this->humidity_sensor_->publish_state(humidity);
 }
-
-// void THALES::setup() {
-//   ESP_LOGCONFIG(TAG, "Setting up THALES...");
-// }
 
 void THALES::update() {
   this->send(THALES_CMD_READ_HOLDING_REGISTERS, 0, THALES_REGISTER_COUNT);

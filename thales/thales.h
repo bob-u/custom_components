@@ -12,8 +12,6 @@ class THALES : public PollingComponent, public modbus::ModbusDevice {
   void set_temperature_sensor(sensor::Sensor *temperature_sensor) { temperature_sensor_ = temperature_sensor; }
   void set_humidity_sensor(sensor::Sensor *humidity_sensor) { humidity_sensor_ = humidity_sensor; }
 
-  // void setup() override;
-
   void update() override;
 
   void on_modbus_data(const std::vector<uint8_t> &data) override;

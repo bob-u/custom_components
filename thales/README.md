@@ -6,6 +6,10 @@ uart:
   tx_pin: GPIO32
   baud_rate: 9600
   stop_bits: 1
+  id: uart_modbus
+  
+modbus:
+  uart_id: uart_modbus
 
 sensor:
   - platform: thales

@@ -1,3 +1,5 @@
+# now included in esphome natively, consider this deprecated
+
 # ESP32 DAC component
 
 ```yaml
